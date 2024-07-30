@@ -8,8 +8,7 @@ class Cliente(models.Model):
     apellido = models.CharField(max_length=20)
     cuit = models.CharField(max_length=13)
     telefono = models.CharField(max_length=20)
-    #cta_cte = models.ManyToManyField('Venta')
-    deuda = models.FloatField(default=0.0, decimal_places=2)
+    deuda = models.DecimalField(default=0.0, decimal_places=2, max_digits=10)
 
     def __str__(self):
         return f"Nombre: {self.nombre} — Apellido: {self.apellido} — Cuit: {self.cuit} — Teléfono: {self.telefono} — Total Deuda: ${self.deuda}"
@@ -22,8 +21,7 @@ class Cliente(models.Model):
 class Proveedor(models.Model):
     empresa = models.CharField(max_length=20)
     telefono = models.CharField(max_length=20)
-    #cta_cte = models.ManyToManyField('Compra')
-    deuda = models.FloatField(default=0.0, decimal_places=2)
+    deuda = models.DecimalField(default=0.0, decimal_places=2, max_digits=10)
 
     def __str__(self):
         return f"Empresa: {self.empresa} — Teléfono: {self.telefono} — Total Adeudado: ${self.deuda}"
@@ -35,7 +33,7 @@ class Proveedor(models.Model):
 #-----------------[ MODELO PRODUCTO ]-----------------
 class Producto(models.Model):
     nombre = models.CharField(max_length=30)
-    precio = models.FloatField()
+    precio = models.DecimalField(default=0.0, decimal_places=2, max_digits=10)
 
     def __str__(self):
         return f"Nombre: {self.nombre} — Precio: ${self.precio}"
@@ -44,7 +42,7 @@ class Producto(models.Model):
 #-----------------[ MODELOS REMITO (COMPRA Y VENTA) ]-----------------
 class Remito(models.Model):
     fecha = models.DateField()
-    monto = models.FloatField(max_digits=10, decimal_places=2)
+    monto = models.DecimalField(decimal_places=2, max_digits=10)
     productos = models.ManyToManyField('Producto', through='ProductoRemito')
 
     def agregar_producto(self, producto, cantidad):
@@ -83,8 +81,8 @@ class Venta(Remito):
             cliente = Cliente.objects.filter(nombre=self.nombre_cliente, apellido=self.apellido_cliente).first()
             if cliente:
                 self.cliente = cliente
-                self.save()
                 cliente.calcular_deuda()
+                self.save()
             else:
                 print("Cliente no encontrado.")
         elif self.estado == 'Pagado':

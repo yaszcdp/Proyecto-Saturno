@@ -1,0 +1,17 @@
+{% extends "appcuentas/base.html" %}
+
+{% block title %} Saturno | Productos {% endblock title %}
+
+{% block main %}
+
+<section class="page-section">
+    <div class="container text-white text-center">
+        <h1 class="pb-4">LISTADO PRODUCTOS</h1>
+        {% for producto in productos %}
+            <p>Nombre: {{producto.nombre}} — Precio: ${{producto.precio}}</p>
+            <hr>
+        {% endfor %}
+    </div>
+</section>    
+
+{% endblock %}

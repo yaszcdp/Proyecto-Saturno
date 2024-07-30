@@ -4,5 +4,5 @@ from appcuentas.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('appcuentas/', include("appcuentas.urls"))
+    path('', include("appcuentas.urls")),
 ]

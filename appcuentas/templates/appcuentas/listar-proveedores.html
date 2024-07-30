@@ -1,0 +1,18 @@
+{% extends "appcuentas/base.html" %}
+
+{% block title %} Saturno | Proveedores {% endblock title %}
+
+{% block main %}
+
+<section class="page-section">
+    <div class="container text-white text-center">
+        <h1 class="pb-4">LISTADO PROVEEDORES</h1>
+        {% for proveedor in proveedores %}
+            <p>Empresa: {{proveedor.empresa}} — Precio: ${{producto.precio}}</p>
+            <p>Teléfono: {{proveedor.telefono}}</p>
+            <hr>
+        {% endfor %}
+    </div>
+</section>    
+
+{% endblock %}

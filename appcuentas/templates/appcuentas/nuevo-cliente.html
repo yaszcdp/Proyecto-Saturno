@@ -1,0 +1,17 @@
+{% extends "appcuentas/base.html" %}
+
+{% load static %}
+
+{% block title %} Saturno | Nuevo Cliente {% endblock title %}
+
+{% block contenido %}
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <input class="btn btn-dark" type="submit" value="Guardar">
+    </form>
+
+{% endblock %}

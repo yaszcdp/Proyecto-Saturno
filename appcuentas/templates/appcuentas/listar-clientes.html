@@ -1,0 +1,23 @@
+{% extends "appcuentas/base.html" %}
+
+{% block title %} Saturno | Clientes {% endblock title %}
+
+{% block main %}
+
+<section class="page-section">
+    <div class="container text-white text-center">
+        <h1 class="pb-4">LISTADO CLIENTES</h1>
+        {% for cliente in clientes %}
+            <p>Cliente: {{cliente.nombre}} {{cliente.apellido}}</p>
+            <p>Cuit: {{cliente.cuit}}</p>
+            <p>Teléfono: {{cliente.telefono}}
+            
+            <hr>
+        {% endfor %}
+    </div>
+</section>    
+
+{% endblock %}
+
+
+
