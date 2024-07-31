@@ -5,18 +5,21 @@ from appcuentas.views import index
 urlpatterns = [
     path('', index, name='index'),
     path('clientes', views.ClienteListView.as_view(), name='clientes'),
-    path('cliente', views.ClienteDetailView.as_view(), name='cliente'),
+    path('ver-cliente/<int:pk>', views.ClienteDetailView.as_view(), name='ver-cliente'),
     path('nuevo-cliente', views.ClienteCreateView.as_view(), name='nuevo-cliente'),
-    path('editar-cliente', views.ClienteUpdateView.as_view(), name='editar-cliente'),
+    path('editar-cliente/<int:pk>', views.ClienteUpdateView.as_view(), name='editar-cliente'),
+    path('eliminar-cliente/<int:pk>', views.ClienteDeleteView.as_view(), name='eliminar-cliente'),
 
     path('proveedores', views.ProveedorListView.as_view(), name='proveedores'),
-    path('proveedor', views.ProveedorDetailView.as_view(), name='proveedor'),
+    path('ver-proveedor/<int:pk>', views.ProveedorDetailView.as_view(), name='ver-proveedor'),
     path('nuevo-proveedor', views.ProveedorCreateView.as_view(), name='nuevo-proveedor'),
-    path('editar-proveedor', views.ProveedorUpdateView.as_view(), name='editar-proveedor'),
+    path('editar-proveedor/<int:pk>', views.ProveedorUpdateView.as_view(), name='editar-proveedor'),
+    path('eliminar-proveedor/<int:pk>', views.ProveedorDeleteView.as_view(), name='eliminar-proveedor'),
 
     path('productos', views.ProductoListView.as_view(), name='productos'),
-    path('producto', views.ProductoDetailView.as_view(), name='producto'),
+    path('ver-producto/<int:pk>', views.ProductoDetailView.as_view(), name='ver-producto'),
     path('nuevo-producto', views.ProductoCreateView.as_view(), name='nuevo-producto'),
-    path('editar-producto', views.ProductoUpdateView.as_view(), name='editar-producto'),
+    path('editar-producto/<int:pk>', views.ProductoUpdateView.as_view(), name='editar-producto'),
+    path('eliminar-producto/<int:pk>', views.ProductoDeleteView.as_view(), name='eliminar-producto'),
 
 ]

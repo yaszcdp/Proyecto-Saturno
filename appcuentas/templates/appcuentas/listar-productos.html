@@ -7,10 +7,21 @@
 <section class="page-section">
     <div class="container text-white text-center">
         <h1 class="pb-4">LISTADO PRODUCTOS</h1>
+        <a class="btn btn-dark" href="{% url 'nuevo-producto' %}">Nuevo Producto</a>
+        <hr>
+        <br>
         {% for producto in productos %}
             <p>Nombre: {{producto.nombre}} — Precio: ${{producto.precio}}</p>
+            <br>
+            <p class="botones">
+                <a class="btn btn-dark" href="{% url 'ver-producto' producto.pk %}">Detalle</a>
+                <a class="btn btn-dark" href="{% url 'editar-producto' producto.pk %}">Editar</a>
+                <a class="btn btn-dark" href="{% url 'eliminar-producto' producto.pk %}">Eliminar</a>
+            </p>
             <hr>
         {% endfor %}
+
+        
     </div>
 </section>    
 

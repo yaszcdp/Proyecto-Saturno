@@ -248,6 +248,20 @@ header {
     min-height: 90vh;
 }
 
+.page-section .container{
+    background-color: #1b1b1bc7;
+    box-shadow: 0 0.2rem 0.2rem 0 #0000001a !important;
+}
+
+.container .formulario{
+    width: 100%;
+    margin: auto 2rem;
+
+}
+
+.botones{
+    font-size: 1.4rem;
+}
 
 /*
 .page-section-about .container{

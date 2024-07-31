@@ -20,23 +20,24 @@ class ClienteListView(ListView):
 
 class ClienteDetailView(DetailView):
     model = Cliente
-    context_object_name = 'cliente'
+    #context_object_name = 'cliente'
     template_name = 'appcuentas/ver-cliente.html'
 
 class ClienteCreateView(CreateView):
     model = Cliente
     template_name = 'appcuentas/nuevo-cliente.html'
-    fields = ['nombre', 'direccion', 'cuit', 'telefono']
+    fields = ['nombre', 'apellido', 'cuit', 'telefono']
     success_url = reverse_lazy('clientes')
 
 class ClienteUpdateView(UpdateView):
     model = Cliente
     template_name = 'appcuentas/editar-cliente.html'
-    fields = ['nombre', 'direccion', 'telefono']
+    fields = ['nombre', 'apellido', 'cuit', 'telefono']
     success_url = reverse_lazy('clientes')
 
 class ClienteDeleteView(DeleteView):
     model = Cliente
+    template_name = 'appcuentas/eliminar-cliente.html'
     success_url = reverse_lazy('clientes')
 
 
@@ -49,7 +50,7 @@ class ProveedorListView(ListView):
 
 class ProveedorDetailView(DetailView):
     model = Proveedor
-    context_object_name = 'proveedor'
+    #context_object_name = 'proveedor'
     template_name = 'appcuentas/ver-proveedor.html'
 
 class ProveedorCreateView(CreateView):
@@ -66,6 +67,7 @@ class ProveedorUpdateView(UpdateView):
 
 class ProveedorDeleteView(DeleteView):
     model = Proveedor
+    template_name = 'appcuentas/eliminar-proveedor.html'
     success_url = reverse_lazy('proveedores')
 
 
@@ -78,22 +80,23 @@ class ProductoListView(ListView):
 
 class ProductoDetailView(DetailView):
     model = Producto
-    context_object_name = 'producto'
+    #context_object_name = 'producto'
     template_name = 'appcuentas/ver-producto.html'
 
 class ProductoCreateView(CreateView):
     model = Producto
     template_name = 'appcuentas/nuevo-producto.html'
-    fields = ['nombre', 'precio', 'stock']
+    fields = ['nombre', 'precio']
     success_url = reverse_lazy('productos')
 
 class ProductoUpdateView(UpdateView):
     model = Producto
     template_name = 'appcuentas/editar-producto.html'
-    fields = ['nombre', 'precio', 'stock']
+    fields = ['nombre', 'precio']
     success_url = reverse_lazy('productos')
 
 class ProductoDeleteView(DeleteView):
     model = Producto
+    template_name = 'appcuentas/eliminar-producto.html'
     success_url = reverse_lazy('productos')
 

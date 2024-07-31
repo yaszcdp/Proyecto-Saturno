@@ -7,13 +7,23 @@
 <section class="page-section">
     <div class="container text-white text-center">
         <h1 class="pb-4">LISTADO CLIENTES</h1>
+        <a class="btn btn-dark" href="{% url 'nuevo-cliente' %}">Nuevo Cliente</a>
+        <hr>
+        <br>
         {% for cliente in clientes %}
             <p>Cliente: {{cliente.nombre}} {{cliente.apellido}}</p>
             <p>Cuit: {{cliente.cuit}}</p>
             <p>Teléfono: {{cliente.telefono}}
-            
+            <br>
+            <p class="botones">
+                <a class="btn btn-dark" href="{% url 'ver-cliente' cliente.pk %}">Detalle</a>
+                <a class="btn btn-dark" href="{% url 'editar-cliente' cliente.pk %}">Editar</a>
+                <a class="btn btn-dark" href="{% url 'eliminar-cliente' cliente.pk %}">Eliminar</a>
+            </p>
             <hr>
+            
         {% endfor %}
+        
     </div>
 </section>    
 

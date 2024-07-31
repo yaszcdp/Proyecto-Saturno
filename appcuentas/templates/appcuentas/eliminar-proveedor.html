@@ -1,20 +1,18 @@
 {% extends "appcuentas/base.html" %}
 
-{% block title %} Saturno | Editar Proveedor {% endblock title %}
+{% block title %} Saturno | Eliminar Proveedor {% endblock title %}
 
 {% block main %}
 
 <section class="page-section">
     <div class="container text-white text-center">
-        <h1 class="pb-4">EDITAR PROVEEDOR</h1>
+        <h1 class="pb-4">ELIMINAR PROVEEDOR</h1>
         <br>
         <hr>
         <form action="" method="POST">
             {% csrf_token %}
-            <table class="m-auto">
-                {{form.as_table}}
-            </table>
-            <input type="submit" class="btn btn-dark" value="Guardar">
+            <h2>¿Seguro deseas eliminar a {{proveedor.empresa}}?</h2>
+            <input type="submit" class="btn btn-dark" value="Eliminar">
             <a href="{% url 'proveedores' %}" class="btn btn-dark">Cancelar</a>
         </form>
     </div>

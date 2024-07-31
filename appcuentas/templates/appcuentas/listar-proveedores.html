@@ -7,11 +7,21 @@
 <section class="page-section">
     <div class="container text-white text-center">
         <h1 class="pb-4">LISTADO PROVEEDORES</h1>
+        <a class="btn btn-dark" href="{% url 'nuevo-proveedor' %}">Nuevo Proveedor</a>
+        <hr>
+        <br>
         {% for proveedor in proveedores %}
-            <p>Empresa: {{proveedor.empresa}} — Precio: ${{producto.precio}}</p>
+            <p>Empresa: {{proveedor.empresa}}</p>
             <p>Teléfono: {{proveedor.telefono}}</p>
+            <br>
+            <p>
+                <a class="btn btn-dark" href="{% url 'ver-proveedor' proveedor.pk %}">Detalle</a>
+                <a class="btn btn-dark" href="{% url 'editar-proveedor' proveedor.pk %}">Editar</a>
+                <a class="btn btn-dark" href="{% url 'eliminar-proveedor' proveedor.pk %}">Eliminar</a>
+            </p>
             <hr>
         {% endfor %}
+        
     </div>
 </section>    
 
