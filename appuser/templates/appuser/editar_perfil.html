@@ -1,0 +1,24 @@
+{% extends "appcuentas/base.html" %}
+
+{% block title %} Saturno | Registro {% endblock title %}
+
+{% block main %}
+
+<section class="page-section">
+    <div class="container text-white text-center">
+        <h1 class="pb-4">EDITAR USUARIO</h1>
+        <br>
+        <hr>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table class="m-auto">
+                {{form.as_table}}
+            </table>
+            <input type="submit" class="btn btn-dark" value="Actualizar">
+            <a href="{% url 'index' %}" class="btn btn-dark">Cancelar</a>
+        </form>
+        <a href="{% url 'editarPassword' %}" class="btn btn-dark">Editar Contraseña</a>
+    </div>
+</section>    
+
+{% endblock %}

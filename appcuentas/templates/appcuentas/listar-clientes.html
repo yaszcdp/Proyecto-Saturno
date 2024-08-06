@@ -7,7 +7,7 @@
 <section class="page-section">
     <div class="container text-white text-center">
         <h1 class="pb-4">LISTADO CLIENTES</h1>
-        <a class="btn btn-dark" href="{% url 'nuevo-cliente' %}">Nuevo Cliente</a>
+        
         <hr>
         <br>
         {% for cliente in clientes %}
@@ -17,13 +17,18 @@
             <br>
             <p class="botones">
                 <a class="btn btn-dark" href="{% url 'ver-cliente' cliente.pk %}">Detalle</a>
-                <a class="btn btn-dark" href="{% url 'editar-cliente' cliente.pk %}">Editar</a>
-                <a class="btn btn-dark" href="{% url 'eliminar-cliente' cliente.pk %}">Eliminar</a>
+                {% if request.user.is_superuser %}
+                    <a class="btn btn-dark" href="{% url 'editar-cliente' cliente.pk %}">Editar</a>
+                    <a class="btn btn-dark" href="{% url 'eliminar-cliente' cliente.pk %}">Eliminar</a>
+                {% endif %}
             </p>
             <hr>
             
         {% endfor %}
         
+        {% if request.user.is_superuser %}
+            <a class="btn btn-dark" href="{% url 'nuevo-cliente' %}">Nuevo Cliente</a>
+        {% endif %}
     </div>
 </section>    
 

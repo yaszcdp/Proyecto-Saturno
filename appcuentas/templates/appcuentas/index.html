@@ -10,7 +10,12 @@
             <div class="text-center">
                 <h1 class="mx-auto my-0 text-uppercase">Proyecto Saturno</h1>
                 <h2 class="text-white-50 mx-auto mt-2 mb-5">Administrador de negocios.</h2>
-                <a class="btn btn-dark" href="">Iniciar Sesión</a>
+                {% if request.user.is_authenticated %}
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Bienvenido, {{request.user.username}}</h2>
+                {% else %}
+                    <a class="btn btn-dark" href="{% url 'login' %}">Iniciar Sesión</a>
+                    <a class="btn btn-dark" href="{% url 'register' %}">Registrarse</a>
+                {% endif %}
             </div>
         </div>
     </div>
