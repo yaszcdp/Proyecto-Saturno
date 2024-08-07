@@ -3,9 +3,13 @@
 {% block title %} Saturno | Proveedores {% endblock title %}
 
 {% block main %}
+<main class="page-section">
 
-<section class="page-section">
-    <div class="container text-white text-center">
+    {% block busqueda %}
+        {% include 'appcuentas/busqueda.html' with page='proveedores' %}
+    {% endblock busqueda %}
+
+    <section class="container text-white text-center">
         <h1 class="pb-4">LISTADO PROVEEDORES</h1>
         <hr>
         <br>
@@ -26,7 +30,7 @@
         {% if request.user.is_superuser %}
             <a class="btn btn-dark" href="{% url 'nuevo-proveedor' %}">Nuevo Proveedor</a>
         {% endif %}
-    </div>
-</section>    
+    </section>
+</main>    
 
 {% endblock %}

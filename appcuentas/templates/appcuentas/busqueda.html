@@ -1,0 +1,8 @@
+
+{% block busqueda %}
+    <form method="GET" action="{% url 'buscar' %}">
+        <input type="hidden" name="page" value="{{page}}">
+        <input type="text" name="query" placeholder="Buscar...">
+        <button type="submit">Buscar</button>
+    </form>
+{% endblock %}

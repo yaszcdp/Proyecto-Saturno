@@ -4,8 +4,13 @@
 
 {% block main %}
 
-<section class="page-section">
-    <div class="container text-white text-center">
+<main class="page-section">
+
+    {% block busqueda %}
+        {% include 'appcuentas/busqueda.html' with page='clientes' %}
+    {% endblock busqueda %}
+
+    <section class="container text-white text-center">
         <h1 class="pb-4">LISTADO CLIENTES</h1>
         
         <hr>
@@ -29,8 +34,8 @@
         {% if request.user.is_superuser %}
             <a class="btn btn-dark" href="{% url 'nuevo-cliente' %}">Nuevo Cliente</a>
         {% endif %}
-    </div>
-</section>    
+    </section>
+</main>    
 
 {% endblock %}
 

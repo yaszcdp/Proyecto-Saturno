@@ -4,6 +4,7 @@ from appcuentas.views import index
 
 urlpatterns = [
     path('', index, name='index'),
+    path('buscar/', views.buscar, name='buscar'),
     path('clientes', views.ClienteListView.as_view(), name='clientes'),
     path('ver-cliente/<int:pk>', views.ClienteDetailView.as_view(), name='ver-cliente'),
     path('nuevo-cliente', views.ClienteCreateView.as_view(), name='nuevo-cliente'),

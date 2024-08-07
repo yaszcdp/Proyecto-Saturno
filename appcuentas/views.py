@@ -14,6 +14,23 @@ def index(request):
     return render(request, "appcuentas/index.html")
 
 
+def buscar(request):
+    query = request.GET.get('query', '')
+    page = request.GET.get('page', '')
+
+    if page == 'productos':
+        productos = Producto.objects.filter(nombre__icontains=query)
+        return render(request, 'appcuentas/listar-productos.html', {'productos': productos})
+    elif page == 'clientes':
+        clientes = Cliente.objects.filter(nombre__icontains=query) | Cliente.objects.filter(apellido__icontains=query)
+        return render(request, 'appcuentas/listar-clientes.html', {'clientes': clientes})
+    elif page == 'proveedores':
+        proveedores = Proveedor.objects.filter(empresa__icontains=query)
+        return render(request, 'appcuentas/listar-proveedores.html', {'proveedores': proveedores})
+    else:
+        response = "No hay resultados"
+        return HttpResponse(response)
+
 #-------[ VISTAS CLIENTES ]-------
 class ClienteListView(LoginRequiredMixin, ListView):
     model = Cliente
